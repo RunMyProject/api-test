@@ -1,6 +1,0 @@
-{ 
- "_id" : "00001",
- "title" : "title1",
- "price" : 12.3,
- "_class" : "com.esabatini.model.Product"
-}
