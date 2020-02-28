@@ -1,0 +1,31 @@
+version: "2.1"
+services:
+
+### MONGO DB CONFIGURATION ###
+##############################
+
+  mongo:
+    image: mongo:3.2.4
+    ports:
+    - 27017:27017
+    command: --smallfiles
+          
+  mongo-client:
+    image: mongoclient/mongoclient
+    ports:
+    - 3030:3000
+    environment:
+      - MONGOCLIENT_DEFAULT_CONNECTION_URL=mongodb://mongo:27017
+    links:
+      - mongo
+
+### API-TEST CONFIGURATION ###
+##############################
+          
+  api-test:
+    image: runmydocker/api-test
+    ports:
+    - 8080:8080
+    links:
+    - mongo
+    entrypoint: "java -Dspring.data.mongodb.uri=mongodb://mongo/apitest -Djava.security.egd=file:/dev/./urandom -jar /app.jar"

@@ -1,0 +1,64 @@
+
+:spring_version: current
+:toc:
+:project_id: api-test
+:icons: font
+:source-highlighter: prettify
+
+== Welcome to API-TEST !
+
+Description of the project: a User places an Order by purchasing a set of Products.
+When the Order is still open, other Products can be added.
+Once the Order has been confirmed, this will then be accepted and closed once that has been delivered.
+The User can then decide to seek compensation once the Order has been processed.
+Models in Java/MongoDB: User, Product, Order.
+This guide walks you through the process of building a https://docker.com[Docker] image for running a Spring Boot 2 App with Mongo DB.
+
+== What you'll build
+
+https://docker.com[Docker] is a Linux container management toolkit with a "social" aspect, allowing users to publish container images and consume those published by others.
+ A Docker image is a recipe for running a containerized process, and in this guide we will build one for a simple Spring Boot 2 App.
+
+== What you'll need
+
+* about 15 minutes
+* jdk: Oracle or Alpine version 1.8 or later
+* [IntelliJ IDEA] https://spring.io/guides/gs/intellij-idea/ 
+or a favourite text editor or IDE
+* [Spring Tool Suite (STS)] https://spring.io/guides/gs/sts/ 
+* [Apache Maven 3.2+] http://maven.apache.org/download.cgi 
+
+You can also import the code straight into your IDE
+
+[[initial]]
+== Set up a Spring Boot 2 App
+
+If you want to run with Maven, execute:
+
+[subs="attributes"]
+----
+./mvn package && java -jar target/api-test-0.0.1-SNAPSHOT.jar
+----
+
+and go to http://localhost:8080/  to see the API TEST home page.
+
+== Containerize It
+
+If you want to run with Docker, execute:
+
+[subs="attributes"]
+----
+./docker-compose up
+----
+
+== Summary
+
+Congratulations! You've just created a Docker container for a Spring Boot 2 App! 
+
+Basically the Spring Boot 2 Apps run on port 8080 inside the container by default and we mapped that to the same port on the host using "-p" on the command line.
+
+== See Also
+
+The following guides may also be helpful:
+
+* https://spring.io/guides/gs/spring-boot/[Building an App with Spring Boot 2]
